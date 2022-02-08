@@ -52,4 +52,6 @@ function chooseAnswer(answerText) {
             return true;
         }
     }
+
+    return false;
 }
