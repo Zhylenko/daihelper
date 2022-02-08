@@ -1,16 +1,14 @@
-"use strict";
-
 console.clear();
 console.log('Loaded');
 
-const API_URL = 'https://dai.vz-lab.com/api/exam/get/answer/';
+var API_URL = 'https://dai.vz-lab.com/api/exam/get/answer/';
 
 document.addEventListener('keypress', function (event) {
     if (event.code == 'Backquote') {
 
         console.log('Key pressed');
 
-        let
+        var
             uri = document.location.toString(),
             questionId = uri.split('#/')[1];
 
@@ -25,7 +23,7 @@ document.addEventListener('keypress', function (event) {
                 return response.json();
             })
             .then(function (jsonResponse) {
-                let answer = jsonResponse.answer;
+                var answer = jsonResponse.answer;
 
                 if (jsonResponse.status == 'ok') {
                     console.log('Answer: ' + answer);
@@ -44,9 +42,11 @@ document.addEventListener('keypress', function (event) {
 });
 
 function chooseAnswer(answerText) {
-    let answers = document.getElementsByClassName('answers  ')[0].children;
+    var answers = document.getElementsByClassName('answers  ')[0].children;
 
-    for (let answer of answers) {
+    for (var i = 0; i < answers.length; i++) {
+        var answer = answers[i];
+
         if (answer.querySelector('span').innerText.trim() == answerText.trim()) {
             answer.querySelector('input').click();
             return true;

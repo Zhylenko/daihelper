@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DaiService implements iExamContract
 {
-    public function getAnswer($data)
+    public function getAnswer(string $data) : string
     {
         $exam           = $this->getExam($data);
         $questionNum    = $this->getQuestion($data);
@@ -30,14 +30,14 @@ class DaiService implements iExamContract
         return $answer;
     }
 
-    public function getExam(string $data)
+    public function getExam(string $data) :? string
     {
         $pattern        = "/^(?:(\d+)?\D+?(\d+))+$/uis";
         preg_match_all($pattern, $data, $matches);
         return isset($matches[1][0]) ? $matches[1][0] : null;
     }
 
-    public function getQuestion(string $data)
+    public function getQuestion(string $data) :? string
     {
         $pattern        = "/^(?:(\d+)?\D+?(\d+))+$/uis";
         preg_match_all($pattern, $data, $matches);

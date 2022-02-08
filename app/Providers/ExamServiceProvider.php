@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\DaiService;
 use Illuminate\Support\ServiceProvider;
+
+use App\Services\DaiService;
 
 class ExamServiceProvider extends ServiceProvider
 {

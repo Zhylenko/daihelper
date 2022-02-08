@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::match(['post', 'get'], '/webhook/' . env('TELEGRAM_BOT_TOKEN'), 'App\Http\Controllers\WebhookController@index')
+Route::post('/webhook/' . env('TELEGRAM_BOT_TOKEN'), 'App\Http\Controllers\WebhookController@index')
     ->name('api.webhook');
 
 Route::match(['post', 'get'], '/exam/get/answer/{data}', 'App\Http\Controllers\ExamController@getAnswer')

@@ -11,7 +11,6 @@ class ExamController extends Controller
     public function getAnswer(Request $request, $data)
     {
         $json = [
-            'status' => 'ok',
             'answer' => Exam::getAnswer($data),
         ];
 

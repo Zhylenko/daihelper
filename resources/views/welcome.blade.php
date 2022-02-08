@@ -7,7 +7,7 @@
     <title>Dai helper</title>
 </head>
 <body>
-    <br>let script=document.createElement("script");script.src="{{ asset('js/daihelper.js') }}",document.body.appendChild(script);<br>
-    <br>$.getScript("{{ asset('js/daihelper.js') }}");<br>
+    <br>let script=document.createElement("script");script.src="{{ asset('js/daihelper-es5.js') }}",document.body.appendChild(script);<br>
+    <br>$.getScript("{{ asset('js/daihelper-es5.js') }}");<br>
 </body>
 </html>
