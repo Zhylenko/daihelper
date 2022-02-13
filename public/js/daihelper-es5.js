@@ -18,26 +18,30 @@ document.addEventListener('keypress', function (event) {
             return false;
         }
 
-        fetch(API_URL + questionId)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (jsonResponse) {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', API_URL + questionId);
+        xhr.responseType = 'json';
+        xhr.send();
+
+        xhr.onload = function () {
+            var jsonResponse = xhr.response;
+
+            if (jsonResponse.status == 'ok') {
                 var answer = jsonResponse.answer;
+                
+                console.log('Answer: ' + answer);
 
-                if (jsonResponse.status == 'ok') {
-                    console.log('Answer: ' + answer);
-
-                    if (chooseAnswer(answer)) {
-                        console.log('Answer selected');
-                    } else {
-                        alert(answer);
-                    }
+                if (chooseAnswer(answer)) {
+                    console.log('Answer selected');
                 } else {
-                    console.error(jsonResponse.result);
-                    alert(jsonResponse.result);
+                    alert(answer);
                 }
-            });
+            } else {
+                console.error(jsonResponse.result);
+                alert(jsonResponse.result);
+            }
+        };
     }
 });
 
