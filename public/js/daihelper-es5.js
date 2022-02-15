@@ -4,7 +4,7 @@ console.log('Loaded');
 var API_URL = 'https://dai.vz-lab.com/api/exam/get/answer/';
 
 document.addEventListener('keypress', function (event) {
-    if (event.code == 'Backquote') {
+    if (event.keyCode == 96) {
 
         console.log('Key pressed');
 
